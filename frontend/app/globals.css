@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@layer utilities {
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes landing-entrance {
+    0% {
+      opacity: 0;
+      transform: translateY(22px) scale(0.985);
+      filter: blur(4px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes ambient-glow {
+    0%, 100% {
+      opacity: 0.85;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes spin-subtle {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-landing-1 {
+    animation: landing-entrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+  }
+
+  .animate-landing-2 {
+    animation: landing-entrance 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+  }
+
+  .animate-landing-3 {
+    animation: landing-entrance 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+  }
+
+  .animate-landing-4 {
+    animation: landing-entrance 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.46s both;
+  }
+
+  .animate-landing-5 {
+    animation: landing-entrance 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+  }
+
+  .animate-glow-pulse {
+    animation: ambient-glow 8s ease-in-out infinite;
+  }
+
+  .animate-spin-subtle {
+    animation: spin-subtle 0.75s linear infinite;
+  }
+}
+
+/* Base custom font smoothing and styling */
+html, body {
+  background-color: #03050d;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth button click interactions */
+button, a, input {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Driftmap ambient background mesh */
+.driftmap-bg {
+  background-color: #03050d;
+  background-image: 
+    radial-gradient(ellipse 95% 85% at 92% 85%, rgba(29, 78, 216, 0.48), transparent 70%),
+    radial-gradient(ellipse 75% 70% at 8% 88%, rgba(30, 58, 138, 0.38), transparent 65%),
+    radial-gradient(ellipse 65% 55% at 50% 98%, rgba(37, 99, 235, 0.28), transparent 70%),
+    radial-gradient(circle at 50% 0%, rgba(3, 5, 13, 0.98), rgba(3, 5, 13, 1) 100%);
+}
+
+/* Glassmorphic utilities */
+.driftmap-glass {
+  background: rgba(16, 19, 29, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.driftmap-glass-subtle {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Smooth custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
