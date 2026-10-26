@@ -106,26 +106,3 @@ sql-agent/
 └── seed_db.py            ← Optional demo database generator
 ```
 
----
-
-## 🌐 Deployment Guide
-
-### Deploy Backend (e.g. Render / Railway / VPS)
-1. **Root Directory:** `backend`
-2. **Build Command:** `pip install -r requirements.txt`
-3. **Start Command:** `uvicorn main:app --host 0.0.0.0 --port $PORT`
-4. **Environment Variables:**
-   - `GROQ_API_KEY`: Your Groq API key
-   - `GROQ_MODEL`: `qwen/qwen3.8-27b` or `llama-3.1-70b-versatile`
-
-### Deploy Frontend (Vercel)
-1. Import repository on [Vercel](https://vercel.com).
-2. Set **Root Directory** to `frontend`.
-3. Set **Environment Variable:**
-   - `NEXT_PUBLIC_API_URL`: Your deployed backend URL (e.g. `https://your-backend.onrender.com`).
-4. Click **Deploy**.
-
----
-
-## 📄 License
-MIT License
