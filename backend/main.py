@@ -69,20 +69,26 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+cors_origins = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:3001",
+    "http://127.0.0.1:3001",
+    "https://sql-agent-v1.vercel.app",  # Your deployed production Vercel frontend
+]
+
+# Allow custom frontend domain if configured via Render environment variables
+if os.getenv("CORS_ORIGIN"):
+    cors_origins.append(os.getenv("CORS_ORIGIN"))
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "http://localhost:3001",
-        "http://127.0.0.1:3001",
-    ],
-    allow_origin_regex=r"https?://(localhost|127\.0\.0\.1)(:\d+)?",
+    allow_origins=cors_origins,
+    allow_origin_regex=r"https://.*\.vercel\.app",  # Allows any Vercel preview or branch deployment
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 # ── Request/Response models ───────────────────────────────────────────────────
 
